@@ -15,7 +15,7 @@ public abstract class Product {
        }
            	this.name = name;
        
-       if (price == null || price.intValue() < 0) { //moze byc tez tak: (price == null || price.compareTo(new BigDecimal("0")) == -1)
+       if (price == null || price.doubleValue() < 0) { //moze byc tez tak: (price == null || price.compareTo(new BigDecimal("0")) == -1) lub price.signum() == -1
     	   throw new IllegalArgumentException("You cannot create products with null or negative price");
        }
        
