@@ -10,7 +10,13 @@ import pl.edu.agh.mwo.invoice.product.Product;
 public class Invoice {
     private final int number = Math.abs(new Random().nextInt());
 	private Map<Product, Integer> products = new HashMap<Product, Integer>();
-
+	private static int totalInvoiceNo = 0;
+    private int invoiceNo = 0;
+    
+	public Invoice() {
+        this.invoiceNo = totalInvoiceNo++;
+    }
+	
     public void addProduct(Product product) {
         addProduct(product, 1);
     }
@@ -67,4 +73,8 @@ public class Invoice {
         }
         return quantity;
     }
+
+	public int getInvoiceNo() {
+		return this.invoiceNo;
+	}
 }

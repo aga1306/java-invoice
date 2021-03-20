@@ -124,7 +124,12 @@ public class InvoiceTest {
     }
     
     @Test
-    public void checkIfDuplicatingProductOnInvoice() {
+    public void testNextInvoiceHasNextNumber() {
+        Assert.assertEquals(invoice.getInvoiceNo() + 1, new Invoice().getInvoiceNo());
+    }
+    
+    @Test
+    public void testIfProductDuplications() {
         Product p = new OtherProduct("czekolada", new BigDecimal("3.99"));
         invoice.addProduct(p, 1);
         invoice.addProduct(p, 2);
