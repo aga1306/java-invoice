@@ -19,7 +19,11 @@ public class Invoice {
         if (product == null || quantity <= 0) {
             throw new IllegalArgumentException();
         }
+        if (products.containsKey(product)) {
+            products.put(product, products.get(product) + quantity);
+        } else {
         products.put(product, quantity);
+        }
     }
 
     public BigDecimal getNetTotal() {
@@ -47,4 +51,20 @@ public class Invoice {
 	public int getNumber() {
 		return number;
 	}
+	
+	public void getProducts() {
+        for (Product product : products.keySet()) {
+            System.out.println(product.getName() + " " + product.getPrice() + " PLN"
+                    + "     quantity: " + (products.get(product)));
+        }
+    }
+	
+	public int getProductQuantity(Product product) {
+
+        int quantity = 0;
+        for (Product product1: products.keySet()) {
+            quantity = products.get(product);
+        }
+        return quantity;
+    }
 }

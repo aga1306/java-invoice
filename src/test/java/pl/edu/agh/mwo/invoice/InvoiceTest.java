@@ -122,4 +122,12 @@ public class InvoiceTest {
     public void testTheSameInvoiceHasTheSameNumber() {
     	Assert.assertEquals(invoice.getNumber(), invoice.getNumber());
     }
+    
+    @Test
+    public void checkIfDuplicatingProductOnInvoice() {
+        Product p = new OtherProduct("czekolada", new BigDecimal("3.99"));
+        invoice.addProduct(p, 1);
+        invoice.addProduct(p, 2);
+        Assert.assertEquals(3,invoice.getProductQuantity(p));
+    }
 }
