@@ -129,6 +129,21 @@ public class InvoiceTest {
     }
     
     @Test
+    public void testIfNoProductsAttAll() {
+    	StringBuilder sb = new StringBuilder();
+    	sb.append("Invoice No.: " + invoice.getNumber() + "\n");
+    	sb.append("Amount of products: 0");
+    	Assert.assertEquals(invoice.getProducts(), sb.toString());
+    }
+    
+    @Test
+    public void testIfOnlyOneProduct() {
+    	Product p = new OtherProduct("nuetlla", new BigDecimal("10.00"));
+    	invoice.addProduct(p, 1);
+    	Assert.assertEquals(1,invoice.getAmountofProducts());
+    }
+    
+    @Test
     public void testIfProductDuplications() {
         Product p = new OtherProduct("czekolada", new BigDecimal("3.99"));
         invoice.addProduct(p, 1);
