@@ -125,7 +125,7 @@ public class InvoiceTest {
     
     @Test
     public void testNextInvoiceHasNextNumber() {
-        Assert.assertEquals(invoice.getInvoiceNo() + 1, new Invoice().getInvoiceNo());
+        Assert.assertEquals(invoice.getNumber() + 1, new Invoice().getNumber());
     }
     
     @Test

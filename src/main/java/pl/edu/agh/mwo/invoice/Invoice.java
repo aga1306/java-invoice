@@ -8,19 +8,24 @@ import java.util.Random;
 import pl.edu.agh.mwo.invoice.product.Product;
 
 public class Invoice {
-    private final int number = Math.abs(new Random().nextInt());
-	private Map<Product, Integer> products = new HashMap<Product, Integer>();
+   	private Map<Product, Integer> products = new HashMap<Product, Integer>();
 	private static int totalInvoiceNo = 0;
-    private int invoiceNo = 0;
+    private int number = 0;
     
 	public Invoice() {
-        this.invoiceNo = totalInvoiceNo++;
+        this.number = totalInvoiceNo++;
     }
 	
     public void addProduct(Product product) {
-        addProduct(product, 1);
+    	if (product == null) {
+            throw new IllegalArgumentException();
+        }
+        if (products.containsKey(product)) {
+            products.put(product, (products.get(product) + 1));
+        } else {
+            products.put(product, 1);
+        }
     }
-
     public void addProduct(Product product, Integer quantity) {
         if (product == null || quantity <= 0) {
             throw new IllegalArgumentException();
@@ -55,7 +60,7 @@ public class Invoice {
     }
 
 	public int getNumber() {
-		return number;
+		return this.number;
 	}
 	
 	public void getProducts() {
@@ -73,8 +78,4 @@ public class Invoice {
         }
         return quantity;
     }
-
-	public int getInvoiceNo() {
-		return this.invoiceNo;
-	}
 }
