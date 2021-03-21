@@ -87,7 +87,7 @@ public class Invoice {
         return quantity;
     }
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		Invoice firstInvoice = new Invoice();
 		firstInvoice.addProduct(new OtherProduct("product_1", new BigDecimal("11.11")), 1);
 		firstInvoice.addProduct(new OtherProduct("product_2", new BigDecimal("11.22")), 1);
@@ -109,6 +109,6 @@ public class Invoice {
 				+ "PLN. Tax total = " + invoice.getTaxTotal() + "PLN.");
 		System.out.println("************************************************************" + "***********");
 		System.out.println("");
-	}
+	}*/
 }
 
